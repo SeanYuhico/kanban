@@ -1,0 +1,25 @@
+<html>
+
+  <head>
+    <style>
+      div{
+        margin:10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="../post" method="POST">
+      Post : <input name="text"> <br>
+      <input type="submit">
+    </form>
+
+    {{#each posts}}
+    <div>
+        Id : {{_id}} <br>
+        Post : {{text}} <br>
+    </div>
+    {{/each}}
+  </body>
+
+</html>
