@@ -22,8 +22,8 @@ router.use("/user", require("./user"))
 router.get("/", function(req, res){
   console.log("GET /")
   Board.getAll().then((boards)=>{
-    res.render("dashboard.hbs", {
-      boards
+    res.render("login.hbs", {
+      // boards
     })
   })
 

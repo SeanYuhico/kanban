@@ -18,11 +18,13 @@ const urlencoder = bodyparser.urlencoded({
 
 router.use(urlencoder)
 // localhost:3000/post/
-router.post("/", auth, (req, res)=>{
+router.post("/newboard", auth, (req, res)=>{
   console.log("POST /board/")
 
-  var post = {
-    text : req.body.text
+  var board = {
+    boardName: req.body.name,
+    members: req.body.un,
+    list: {}
   }
 
   Board.create(board).then((board)=>{

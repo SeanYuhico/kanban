@@ -9,7 +9,7 @@ const router = express.Router()
 const User = require("../models/user")
 const bodyparser = require("body-parser")
 const auth = require("../middlewares/auth")
-const Post = require("../models/post")
+const Board = require("../models/board")
 
 const app = express()
 
@@ -55,8 +55,8 @@ router.post("/login", (req, res)=>{
     console.log("authenticate " + newUser)
     if(newUser){
       req.session.username = user.username
-      Post.getAll().then((posts)=>{
-        res.render("home", {
+      Board.getAll().then((posts)=>{
+        res.render("dashboard", {
           posts
         })
       })
