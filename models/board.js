@@ -18,7 +18,7 @@ var Board = mongoose.model("board", boardSchema)
 
 exports.create = function(board){
   return new Promise(function(resolve, reject){
-    var p = new Post(board)
+    var p = new Board(board)
 
     p.save().then((newBoard)=>{
       resolve(newBoard)
@@ -30,7 +30,7 @@ exports.create = function(board){
 
 exports.get = function(id){
   return new Promise(function(resolve, reject){
-    Post.findOne({_id:id}).then((board)=>{
+    Board.findOne({_id:id}).then((board)=>{
       console.log(board)
       resolve(board)
     }, (err)=>{
@@ -41,7 +41,7 @@ exports.get = function(id){
 
 exports.getAll = function(){
   return new Promise(function(resolve, reject){
-    Post.find().then((boards)=>{
+    Board.find().then((boards)=>{
       resolve(boards)
     }, (err)=>{
       reject(err)
@@ -51,7 +51,7 @@ exports.getAll = function(){
 
 exports.edit = function(id, update){
   return new Promise(function(resolve, reject){
-    Post.findOneAndUpdate({
+    Board.findOneAndUpdate({
       _id : id
     }, update, {
       new : true
@@ -65,7 +65,7 @@ exports.edit = function(id, update){
 
 exports.delete = function(id){
   return new Promise(function(resolve, reject){
-    Post.remove({
+    Board.remove({
       _id : id
     }).then((result)=>{
       resolve(result)

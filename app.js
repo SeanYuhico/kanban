@@ -15,13 +15,15 @@ const session = require("express-session")
 const app = express()
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost:27017/notes", {
+mongoose.connect("mongodb://localhost:27017/kanban", {
   useNewUrlParser:true
 })
 app.set("view engine", "hbs")
+// const publicPath = path.resolve(__dirname, "public");
+// app.use(express.static(publicPath));
 app.use(express.static(__dirname + "/public"))
 
-app.use(session({
+app.use(session({ 
   secret : "secret",
   name : "secretname",
   resave: true,
@@ -30,4 +32,6 @@ app.use(session({
 
 app.use(require("./controllers"))
 
-app.listen(5000)
+app.listen(5000, (req,res)=>{
+  console.log("live at port 5000")
+})

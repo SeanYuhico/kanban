@@ -12,18 +12,19 @@ index.js should be named index.js, because server.js just refers to the controll
 const express = require("express")
 const router = express.Router()
 const app = express()
-const Post = require("../models/post")
+const Board = require("../models/board")
 
 // load all the controllers into router
-router.use("/post", require("./post"))
+router.use("/board", require("./board"))
 router.use("/user", require("./user"))
 
 // create the route for the index/home page
 router.get("/", function(req, res){
   console.log("GET /")
-  Post.getAll().then((posts)=>{
-    res.render("index", {
-      posts
+  Board.getAll().then((boards)=>{
+    res.render("dashboard.hbs", {
+      style: "dashboard.css",
+      boards
     })
   })
 
