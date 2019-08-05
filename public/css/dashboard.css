@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 a {
@@ -24,16 +25,27 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+.navigation h1 {
+    color: white;
+}
+
 .navigation li{
     display: inline-flex;
     text-align: center;
     margin: 0 auto;
+    padding: 0px 4px;
     vertical-align: top;
     align-items: center;
     background-color: #a7dad2;
     border-radius: 10px;
     height: 30px;
     border: none;
+    color: black;
+}
+
+.navigation li a{
+    color: black;
+    text-decoration-color: black;
 }
 
 .kanban-label {
@@ -93,6 +105,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .board-view-name {
     height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 .lane-container {
@@ -113,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     flex-direction: column;
     white-space: normal;
-    
+    border-radius: 10px;
 }
 
 .add-lane{
@@ -142,6 +156,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .add-card:hover {
     background-color: rgb(175, 175, 175);
+}
+
+.add-card-clicked {
+    display: initial;
 }
 
 .card-container {
