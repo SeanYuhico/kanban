@@ -8,18 +8,20 @@ Model files must be created independent of each other. Deleting one model file w
 
 const mongoose = require("mongoose")
 
-var postSchema = mongoose.Schema({
-    text: String
+var listSchema = mongoose.Schema({
+    boardName: String,
+    members: {},
+    lists: {}
 })
 
-var Post = mongoose.model("post", postSchema)
+var Board = mongoose.model("list", listSchema)
 
-exports.create = function(post){
+exports.create = function(list){
   return new Promise(function(resolve, reject){
-    var p = new Post(post)
+    var p = new Post(list)
 
-    p.save().then((newPost)=>{
-      resolve(newPost)
+    p.save().then((newList)=>{
+      resolve(newList)
     }, (err)=>{
       reject(err)
     })
@@ -28,9 +30,9 @@ exports.create = function(post){
 
 exports.get = function(id){
   return new Promise(function(resolve, reject){
-    Post.findOne({_id:id}).then((post)=>{
-      console.log(post)
-      resolve(post)
+    Post.findOne({_id:id}).then((list)=>{
+      console.log(list)
+      resolve(list)
     }, (err)=>{
       reject(err)
     })
@@ -39,8 +41,8 @@ exports.get = function(id){
 
 exports.getAll = function(){
   return new Promise(function(resolve, reject){
-    Post.find().then((posts)=>{
-      resolve(posts)
+    Post.find().then((boards)=>{
+      resolve(boards)
     }, (err)=>{
       reject(err)
     })
@@ -53,8 +55,8 @@ exports.edit = function(id, update){
       _id : id
     }, update, {
       new : true
-    }).then((newPost)=>{
-      resolve(newPost)
+    }).then((newList)=>{
+      resolve(newList)
     }, (err)=>{
       reject(err)
     })

@@ -1,0 +1,90 @@
+body {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.navigation {
+    top: 0px;
+    left: 0px;
+    min-height: 20px;
+    height: 40px;
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: #1f975f;
+    width: 100%;
+    align-items: center;
+}
+
+.navigation li{
+    display: inline-flex;
+    text-align: center;
+    margin: 0 auto;
+    vertical-align: top;
+    align-items: center;
+    background-color: #a7dad2;
+    border-radius: 10px;
+    height: 30px;
+    border: none;
+}
+
+.kanban-label {
+    display: block;
+    float: inherit;
+}
+
+.nav-right {
+    padding-right: 20px;
+}
+
+.nav-left {
+    padding-left: 20px;
+}
+
+
+
+.board-list-panel {
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px; 
+}
+
+.board-panel h3 {
+    padding-bottom: 20px;
+}
+
+.board-ctnr {
+    display: inline-flex;
+    padding: 0px 20px;
+    width: 100%;
+    flex-flow: wrap;
+}
+
+.board {
+    background-color: beige;
+    border-radius: 20px;
+    max-width: 18%;
+    min-width: 160px;
+    min-height: 75px;
+    padding: 20px;
+    margin: 10px;
+    border: none;
+}
+
+.favorite-toggle {
+    display: none;
+}
+
+
+
+.lane {
+    background-color: rgb(201, 201, 201);
+}

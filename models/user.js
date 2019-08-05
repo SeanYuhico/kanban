@@ -19,7 +19,7 @@ userSchema.pre("save", function(next){
   next()
 })
 
-var User = mongoose.model("user", userSchema)
+let User = mongoose.model("user", userSchema)
 
 exports.create = function(user){
   return new Promise(function(resolve, reject){

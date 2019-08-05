@@ -10,7 +10,7 @@ const {User} = require("./user.js")
 const app = express()
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost:27017/users", {
+mongoose.connect("mongodb://localhost:27017/kanban", {
     useNewUrlParser:true
 })
 
@@ -23,11 +23,15 @@ app.set('view engine', 'hbs');
 app.use(cookieparser())
 app.use(express.static(__dirname + "/public"))
 app.use(session({
-    secret: "secretname",
-    name: "cookiename",
+    secret: "secret",
+    name: "secretname",
     resave: true,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000*60*68*24*365*2
+        maxAge: 1000*60*68*24*2
     }
 }))
+
+app.use(require("./controllers"))
+
+app.listen(5500)
