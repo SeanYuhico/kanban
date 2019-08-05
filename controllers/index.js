@@ -23,7 +23,6 @@ router.get("/", function(req, res){
   console.log("GET /")
   Board.getAll().then((boards)=>{
     res.render("dashboard.hbs", {
-      style: "dashboard.css",
       boards
     })
   })
