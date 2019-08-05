@@ -114,21 +114,16 @@
         </div>
         <div class="board-list-panel">
             <div>
-                <h3>Boards</h3>
+                <h3>{{username}}'s Boards</h3>
             </div>
+            
             <div class="board-ctnr">
-                <a href="#" class="board">
-                        <div class="board-name">Board Name</div>
+                {{#each board}}
+                <a href="#" data-id={{_id}} class="board">
+                        <div class="board-name">{{boardname}}</div>
                         <div class="favorite-toggle"></div>
                 </a>
-                <a href="#" class="board">
-                    <div class="board-name">Board Name</div>
-                    <div class="favorite-toggle"></div>
-                </a>
-                <a href="#" class="board">
-                        <div class="board-name">Board Name</div>
-                        <div class="favorite-toggle"></div>
-                </a>
+                {{/board}}
                 <div class="add-board board">
                     <div class="board-name">Add new board</div>
                 </div>

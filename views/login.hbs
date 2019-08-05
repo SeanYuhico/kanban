@@ -1,17 +1,19 @@
 <html>
 
   <head>
-
+    <link href="public\css\login.css" rel="stylesheets" type="text/css">
   </head>
 
   <body>
     {{error}}
-
+    <h1>Login to your Account</h1>
     <form action="user/login" method="POST">
       Login: <br>
-      Username : <input name="username" type="text"> <br>
-      Password : <input name="password" type="password"> <br>
-      <input type="submit">
+      Username <br>
+      <input class="field" name="username" type="text"> <br>
+      Password <br>
+      <input class="field" name="password" type="password"> <br>
+      <input class="button" type="submit">
     </form>
   </body>
 
