@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0px;
     min-height: 20px;
     height: 40px;
-    position: relative;
+    position: fixed;
     display: inline-flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -83,8 +83,88 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
+.board-view-panel {
+    padding-top: 40px;
+    width: 100%;
+    height: calc(100% - 40px);
+    background-color: white;
+    overflow-y: hidden;
+}
 
+.board-view-name {
+    height: 40px;
+}
 
-.lane {
-    background-color: rgb(201, 201, 201);
+.lane-container {
+    width: 100%;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.lane{
+    position: relative;
+    box-sizing: border-box;
+    margin: 10px;
+    min-width: 280px;
+    max-width: 280px;
+    background-color: rgb(218, 218, 218);
+    height: calc(100% - 40px);
+    max-height: calc(100% - 80px);
+    display: inline-flex;
+    flex-direction: column;
+    white-space: normal;
+    
+}
+
+.add-lane{
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto;
+    min-width: 280px;
+    max-width: 280px;
+    padding: 16px;
+    background-color: rgb(218, 218, 218);
+    max-height: 100px;
+    display: inline-flex;
+}
+
+.add-lane:hover {
+    background-color: rgb(175, 175, 175);
+}
+
+.lane-header {
+    padding: 10px;
+}
+
+.add-card {
+    padding: 10px 12px;
+}
+
+.add-card:hover {
+    background-color: rgb(175, 175, 175);
+}
+
+.card-container {
+    padding: 10px 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.card img {
+    width: 100%;
+}
+  
+.card p {
+    margin: 10px;
 }
