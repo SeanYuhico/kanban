@@ -6,10 +6,15 @@ h1 {
     font-size: 32pt;
 }
 
+body {
+    text-align: center;
+}
+
 .container {
     max-width: 380px;
     display: flex;
     flex-direction: column;
+    display: inline-block;
 }
 
 .field {
