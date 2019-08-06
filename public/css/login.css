@@ -7,18 +7,25 @@ h1 {
 }
 
 body {
-    text-align: center;
+    text-align: left;
 }
 
 .container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.form {
     max-width: 380px;
     display: flex;
     flex-direction: column;
-    display: inline-block;
 }
 
+
 .field {
-    border-radius: 5;
+    border-radius: 5px;
     background-color: rgb(189, 189, 189);
     border: 1px solid rgb(163, 172, 180);
     box-sizing: border-box;
@@ -27,8 +34,10 @@ body {
 
 .button {
     justify-content: center;
-    border-radius: 5;
+    border-radius: 4px;
     background-color: #1f975f;
     color: white;
     max-width: 380px;
+    border: none;
+    font-size: 20px;
 }

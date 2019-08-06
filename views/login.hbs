@@ -1,20 +1,23 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="/css/login.css" >
+    <link rel="stylesheet" type="text/css" href="login.css">
   </head>
 
   <body>
     {{error}}
     <div class="container">
-      <h1>Login to your Account</h1>
-      <form action="user/login" method="POST">
-        Login: <br>
+      
+      <form class="form" action="user/login" method="POST">
+        <h1>Login to your Account</h1>
         Username <br>
         <input class="field" name="username" type="text"> <br>
         Password <br>
         <input class="field" name="password" type="password"> <br>
         <input class="button" type="submit">
+
+        <br>
+        No account yet? <a href="register">Sign up here</a>
       </form>
     </div>
   </body>
