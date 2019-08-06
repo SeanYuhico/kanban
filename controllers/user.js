@@ -20,7 +20,7 @@ const urlencoder = bodyparser.urlencoded({
 router.use(urlencoder)
 
 // localhost:3000/user/register
-router.get("/register", (req, res)=>{
+router.get("/register", urlencoder, (req, res)=>{
   console.log("get /user/register")
   
   res.render("register", {
@@ -42,14 +42,14 @@ router.post("/register", (req, res)=>{
         // user
       })
   },(error)=>{
-    res.render("dashboard", {
+    res.render("/register", {
       error : "some error in registering: " + error
     })
   })
 
 })
 
-router.get("/login", (req, res)=>{
+router.get("/login", urlencoder, (req, res)=>{
   console.log("get /user/login")
   
   res.render("login", {
@@ -75,10 +75,16 @@ router.post("/login", (req, res)=>{
         res.render("dashboard", {
           boards
         })
+      }, (error)=> {
+        console.log("may error dito");
+        res.render("login",{
+          error : "some error in logging in: " + error
+        })
       })
     }
   }, (error)=>{
-    res.render("dashboard",{
+    console.log("may error dito");
+    res.render("login",{
       error : "some error in logging in: " + error
     })
   })

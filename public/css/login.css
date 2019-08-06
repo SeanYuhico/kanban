@@ -34,6 +34,7 @@ a {
 }
 
 .form {
+    width: 200px;
     max-width: 380px;
     display: flex;
     flex-direction: column;
