@@ -9,7 +9,7 @@ const router = express.Router()
 const User = require("../models/user")
 const bodyparser = require("body-parser")
 const auth = require("../middlewares/auth")
-const Post = require("../models/post")
+const Board = require("../models/board")
 
 const app = express()
 
@@ -20,7 +20,7 @@ const urlencoder = bodyparser.urlencoded({
 router.use(urlencoder)
 
 // localhost:3000/user/register
-router.post("/register", (req, res)=>{
+router.post("/user/register", (req, res)=>{
   console.log("POST /user/register")
   var user = {
     username : req.body.username,
@@ -30,8 +30,8 @@ router.post("/register", (req, res)=>{
   User.create(user).then((user)=>{
       console.log("successful " + user)
       req.session.username = user.username
-      res.render("home", {
-        user
+      res.render("register", {
+        // user
       })
   },(error)=>{
     res.render("index", {
@@ -55,9 +55,9 @@ router.post("/login", (req, res)=>{
     console.log("authenticate " + newUser)
     if(newUser){
       req.session.username = user.username
-      Post.getAll().then((posts)=>{
-        res.render("home", {
-          posts
+      Board.getAll().then((boards)=>{
+        res.render("dashboard", {
+          boards
         })
       })
     }
