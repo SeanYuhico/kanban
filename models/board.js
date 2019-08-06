@@ -10,8 +10,8 @@ const mongoose = require("mongoose")
 
 var boardSchema = mongoose.Schema({
     boardName: String,
-    members: {},
-    lists: {}
+    members: [],
+    lists: []
 })
 
 var Board = mongoose.model("board", boardSchema)

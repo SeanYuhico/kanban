@@ -17,6 +17,9 @@ const Board = require("../models/board")
 // load all the controllers into router
 router.use("/board", require("./board"))
 router.use("/user", require("./user"))
+// router.use("/card", require("./card"))
+// router.use("/dashboard", require("./dashboard"))
+// router.use("/list", require("./list"))
 
 // create the route for the index/home page
 router.get("/", function(req, res){
