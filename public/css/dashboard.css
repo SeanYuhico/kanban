@@ -98,12 +98,61 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
+.add-board-form-container {
+    display: none;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.281);
+    padding-top: 40px;
+    width: 100%;
+    height: calc(100% - 40px);
+    justify-content: center;
+}
+
+.add-board-form {
+    padding: 10px;
+    background-color: white;
+    border-radius: 2px;
+    width: 200px;
+    height: 100px;;
+}
+
+.add-board-textfield {
+    width: 100px;
+    border-radius: 5px;
+    background-color: rgb(221, 221, 221);
+    border: 1px solid rgb(163, 172, 180);
+    box-sizing: border-box;
+    height: 50px;
+    padding: .5em;
+}
+
+.add-board-submit {
+    text-align: center;
+    margin-top:10px;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #1f975f;
+    color: white;
+    max-width: 380px;
+    margin-bottom: 15px;
+    border: none;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 5px;
+    height: 50px;
+}
+
+/* Board.hbs */
+
 .board-view-panel {
     padding-top: 40px;
     width: 100%;
     height: calc(100% - 40px);
     background-color: white;
     overflow-y: hidden;
+    z-index: 0;
 }
 
 .board-view-name {
