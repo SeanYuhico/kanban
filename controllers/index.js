@@ -24,11 +24,7 @@ router.use("/user", require("./user"))
 // create the route for the index/home page
 router.get("/", function(req, res){
   console.log("GET /")
-  Board.getAll().then((boards)=>{
-    res.render("login.hbs", {
-      boards
-    })
-  })
+  res.redirect("../user/login")
 
 })
 

@@ -17,13 +17,19 @@
             <ul class="nav-right">
                 {{!-- <li class="menu-toggle">Add</li> --}}
                 {{!-- <li><a href="#">About</a></li> --}}
-                <li><a href="#">Log Out</a></li>
+                <li>
+                    {{!-- <a href="#">Log Out</a> --}}
+                    <form action="logout" method="POST">
+                        <br>
+                        <input class="logoutbutton" type="submit" value="Log out">
+                    </form>
+                </li>
             </ul>
         </div>
         <div class="add-board-form-container">
-            <form class="add-board-form">
+            <form class="add-board-form" action="/add" method="POST">
                 New Board Title <br>
-                <input class="add-board-textfield" placeholder="board title" value="boardtitle" type="text">
+                <input class="add-board-textfield" placeholder="board title" value="" name="name" type="text">
                 <input class="add-board-submit" value="done" type="submit">
             </form>
         </div>
