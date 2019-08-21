@@ -57,6 +57,21 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 20px;
 }
 
+.logoutbutton {
+    display: inline-flex;
+    /* text-align: center; */
+    margin: 0 auto;
+    padding: 0px 4px;
+    vertical-align: top;
+    align-items: center;
+    background-color: #a7dad2;
+    border-radius: 10px;
+    height: 30px;
+    border: none;
+    /* color: black; */
+    font-size: 14px;
+}
+
 .nav-left {
     padding-left: 20px;
 }
@@ -99,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .add-board-form-container {
-    display: none;
+    /* display: none; */
     align-items: center;
     position: absolute;
     z-index: 1;

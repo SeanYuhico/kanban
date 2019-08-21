@@ -71,16 +71,19 @@ router.post("/login", (req, res)=>{
     console.log("authenticate " + newUser)
     if(newUser){
       req.session.username = user.username
-      Board.getAll().then((boards)=>{
-        res.render("dashboard", {
-          boards
-        })
-      }, (error)=> {
-        console.log("may error dito");
-        res.render("login",{
-          error : "some error in logging in: " + error
-        })
-      })
+      console.log("pumasok siya dito")
+      res.redirect("../dashboard/boards")
+      // Board.getAll().then((boards)=>{
+      //   res.render("dashboard", {
+      //     boards
+      //   })
+        
+      // }, (error)=> {
+      //   console.log("may error dito");
+      //   res.render("login",{
+      //     error : "some error in logging in: " + error
+      //   })
+      // })
     }
   }, (error)=>{
     console.log("may error dito");
@@ -88,6 +91,11 @@ router.post("/login", (req, res)=>{
       error : "some error in logging in: " + error
     })
   })
+})
+
+router.post("/logout", (req,res)=>{
+  console.log("POST /user/logout")
+  res.redirect("../user/login")
 })
 
 // always remember to export the router for index.js
