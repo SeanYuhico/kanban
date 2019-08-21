@@ -1,6 +1,8 @@
 <html>
     <head>
+        <link rel = "stylesheet" type = "text/css" href = "overlay.css"/>
         <link rel = "stylesheet" type = "text/css" href = "/public/css/dashboard.css"/>
+        <script src="/public/jquery.js"></script>
     </head>
     <body>
         <div class="navigation">
@@ -37,10 +39,26 @@
                         <div class="board-name">Board Name</div>
                         <div class="favorite-toggle"></div>
                 </a>
-                <div class="add-board board">
+                <a href class="overlay-trigger add-board board" data-overlay="overlay-new-board">
                     <div class="board-name">Add new board</div>
+                </a>
+            </div>
+        </div>
+
+
+        <div id="overlay-new-board" class="overlay">
+            <div class="overlay-inner">
+                <div id = "new-board-container">
+                    <div>Board Name</div>
+                    <div>
+                        <form action="" method="POST">
+                            <input class="field" name="boardname" type="text">
+                            <input class="button" value="Create Board" type="submit">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
+    <script src="overlay.js"></script>
 </html>

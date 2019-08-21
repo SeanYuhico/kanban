@@ -239,3 +239,60 @@ h1, h2, h3, h4, h5, h6 {
 .card p {
     margin: 10px;
 }
+
+#new-board-container {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 200px;
+    min-width: 300px;
+    min-height: 200px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-info-container {
+
+    padding: 10px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin: 10px;
+    min-width: 300px;
+    min-height: 200px;
+    width: 80%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field {
+    border-radius: 5px;
+    background-color: rgb(221, 221, 221);
+    border: 1px solid rgb(163, 172, 180);
+    box-sizing: border-box;
+    padding: .5em;
+    margin-bottom: 10px;
+}
+
+.button {
+    text-align: center;
+    margin-top:10px;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #1f975f;
+    color: white;
+    max-width: 380px;
+    margin-bottom: 15px;
+    border: none;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 5px;
+}
