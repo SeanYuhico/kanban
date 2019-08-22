@@ -138,7 +138,7 @@ $( document ).ready(function() {
 		console.log(img);
 		
 		$.ajax({
-			url: "../new-card/" + id,
+			url: "../board/new-card/",
 			method: "POST",
 			data:{
 				cardname: name,

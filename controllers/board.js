@@ -94,12 +94,22 @@ router.post("/new-lane", (req,res)=>{
     //   console.log(board.boardName)
     //   newBoard.boardName=board.boardName
     //   newBoard.members=board.members
-      newBoard.lists.push(lists)
+      // newBoard.lists.push(lists)
     // })
     Board.edit(boardID, newBoard).then((board)=>{
       // board.lists.push(list)
       console.log("successful board edit: " + board)
     })
+})
+router.get("/new-card",(req,res)=>{
+  let newCard = {
+    cardName: undefined,
+    members: req.session.username,
+    description: String,
+    imgname: String,
+    originalimgname: String
+  }
+  List.get()
 })
 
 router.get("/sample", function(req, res) {

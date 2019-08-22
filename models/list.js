@@ -51,7 +51,7 @@ exports.getAll = function(){
 
 exports.edit = function(id, update){
   return new Promise(function(resolve, reject){
-    List.findOneAndUpdate({
+    List.findByIdAndUpdate({
       _id : id
     }, update, {
       new : true
