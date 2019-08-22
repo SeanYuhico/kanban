@@ -13,13 +13,15 @@ const express = require("express")
 const router = express.Router()
 const app = express()
 const Board = require("../models/board")
+const List = require("../models/list")
 
 // load all the controllers into router
-router.use("/board", require("./board"))
-router.use("/user", require("./user"))
-// router.use("/card", require("./card"))
-// router.use("/dashboard", require("./dashboard"))
-// router.use("/list", require("./list"))
+router.use("/board", require("../controllers/board"))
+router.use("/user", require("../controllers/user"))
+// router.use("/card", require("../controllers/card"))
+router.use("/dashboard", require("../controllers/dashboard"))
+// router.use("/overlay", require("../controllers/overlay"))
+// router.use("/list", require("../controllers/list"))
 
 // create the route for the index/home page
 router.get("/", function(req, res){

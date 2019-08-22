@@ -44,7 +44,7 @@ exports.authenticate = function(user){
     }).then((user)=>{
       console.log("callback user : " + user)
       resolve(user)
-    },(err)=>{
+    }).catch((err)=>{
       reject(err)
     })
   })

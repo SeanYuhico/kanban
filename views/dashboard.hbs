@@ -1,6 +1,8 @@
 <html>
     <head>
-        <link rel = "stylesheet" href = "/css/dashboard.css"/>
+       <link rel = "stylesheet" href = "../css/overlay.css"/>
+       <link rel = "stylesheet" href = "../css/dashboard.css"/>
+        <script src="/jquery.js"></script>
     </head>
     <body>
         <div class="navigation">
@@ -19,7 +21,7 @@
                 {{!-- <li><a href="#">About</a></li> --}}
                 <li>
                     {{!-- <a href="#">Log Out</a> --}}
-                    <form action="logout" method="POST">
+                    <form action="../user/logout" method="POST">
                         <br>
                         <input class="logoutbutton" type="submit" value="Log out">
                     </form>
@@ -27,9 +29,9 @@
             </ul>
         </div>
         <div class="add-board-form-container">
-            <form class="add-board-form" action="/add" method="POST">
+            <form class="add-board-form" action="add" method="POST">
                 New Board Title <br>
-                <input class="add-board-textfield" placeholder="board title" value="" name="name" type="text">
+                <input class="add-board-textfield" placeholder="board title" value="" name="boardname" type="text">
                 <input class="add-board-submit" value="done" type="submit">
             </form>
         </div>
@@ -39,16 +41,41 @@
             </div>
             
             <div class="board-ctnr">
-                {{#each board}}
-                <a href="#" data-id={{_id}} class="board">
-                        <div class="board-name">{{boardName}}</div>
-                        <div class="favorite-toggle"></div>
-                </a>
+                {{#each boards}}
+                    <a href="../board/{{_id}}" data-id={{_id}} class="board">
+                            <div class="board-name">{{boardName}}</div>
+                            <div class="favorite-toggle"></div>
+                    </a>
                 {{/each}}
-                <div class="add-board board">
+                {{!-- <form class="add-board-form" action="../dashboard/:id" method="GET">
+                    <a href="#" data-id={{_id}} class="board">
+                        <div class="board-name"></div>
+                        <div class="favorite-toggle"></div>
+                    </a>
+                    <input class="add-board-submit" value="{{boardName}}" data-id="{{_id}}" type="submit">
+                </form> --}}
+                
+                <a href class="overlay-trigger add-board board" data-overlay="overlay-new-board">
                     <div class="board-name">Add new board</div>
+                </a>
+            </div>
+
+
+            <div id="overlay-new-board" class="overlay">
+                <div class="overlay-inner">
+                    <div id = "new-board-container">
+                        <div>Board Name</div>
+                        <div>
+                            <form action="add" method="POST">
+                                <input class="field" name="boardname" type="text">
+                                <input class="button" value="Create Board" type="submit">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
+    {{!-- <script src="../controllers/overlay.js"></script> --}}
+    <script src="/overlay.js"></script>
 </html>

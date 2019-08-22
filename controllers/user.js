@@ -38,9 +38,10 @@ router.post("/register", (req, res)=>{
   User.create(user).then((user)=>{
       console.log("successful " + user)
       req.session.username = user.username
-      res.render("dashboard", {
-        // user
-      })
+      // res.render("dashboard", {
+      //   // user
+      // })
+      res.redirect("../dashboard/boards")
   },(error)=>{
     res.render("/register", {
       error : "some error in registering: " + error
@@ -84,12 +85,13 @@ router.post("/login", (req, res)=>{
       //     error : "some error in logging in: " + error
       //   })
       // })
+    } else {
+      reject(new Error("No user"))
     }
-  }, (error)=>{
-    console.log("may error dito");
-    res.render("login",{
-      error : "some error in logging in: " + error
-    })
+  
+  }).catch((error) => {
+    console.log("No User")
+    res.redirect("../user/login?error=login_error")
   })
 })
 

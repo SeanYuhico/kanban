@@ -1,0 +1,48 @@
+.overlay {
+    overflow: scroll;
+    position: fixed;
+    top: 0;
+    bottom: 110%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10000;
+    opacity: 0;
+    background: rgba(77, 77, 77, 0.5);
+    transition: opacity 200ms linear, bottom 0s linear 200ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .overlay-open {
+    bottom: 0;
+    opacity: 1.0;
+    transition: opacity 200ms linear, bottom 0s linear;
+  }
+  .overlay-view {
+    overflow: hidden;
+  }
+  .overlay-form .overlay-inner {
+    background: #FFFFFF;
+    margin: 5rem auto;
+    opacity: 1.0;
+    padding: 4rem;
+    max-width: 700px;
+    
+  }
+  .admin-bar .overlay {
+    top: 32px;
+  }
+  @media screen and (max-width: 782px) {
+    .admin-bar .overlay {
+      top: 46px;
+    }
+  }
+
+  @media screen and (min-width: 52rem) {
+    .overlay-inner {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  

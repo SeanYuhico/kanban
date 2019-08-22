@@ -11,7 +11,9 @@ const mongoose = require("mongoose")
 var cardSchema = mongoose.Schema({
     cardName: String,
     members: {},
-    content: []
+    description: String,
+    imgname: String,
+    originalimgname: String
 })
 
 var Card = mongoose.model("card", cardSchema)

@@ -21,8 +21,12 @@ exports.create = function(board){
     var p = new Board(board)
 
     p.save().then((newBoard)=>{
+      console.log(newBoard)
+      console.log("saved1")
       resolve(newBoard)
+      console.log("saved2")
     }, (err)=>{
+      console.log("not saved")
       reject(err)
     })
   })
@@ -43,6 +47,7 @@ exports.getAll = function(){
   return new Promise(function(resolve, reject){
     Board.find().then((boards)=>{
       resolve(boards)
+      console.log("working")
     }, (err)=>{
       reject(err)
     })

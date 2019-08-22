@@ -1,8 +1,10 @@
 <html>
     <head>
         <link rel = "stylesheet" href = "/css/dashboard.css"/>
+        <script src="/jquery.js"></script>
     </head>
-    <body>  
+    <body> 
+        <!--boardname  lane->_id,listname   card->_id --> 
         <div class="navigation">
             <ul class="nav-left">
                 <li class="menu-toggle">User</li>
@@ -20,6 +22,18 @@
             <div class="board-view-name">
                 <h2>{{boardName}}</h2>
             </div>
+            <button id = "jonal"> SAMPLE </button>
+            <script>
+                $("#jonal").on('click', () => {
+                    $.get("/sample", (data) => {
+                        console.log(data)
+                        $("#jonal").html(data);
+
+                        data.data
+                    })
+                })
+
+            </script>
             <div class="lane-container">
                 {{#each lane}}
                 <div class="lane" data-id={{_id}}>

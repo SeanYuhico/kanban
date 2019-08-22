@@ -26,9 +26,9 @@ router.post("/", auth, (req, res)=>{
   }
 
   Board.create(board).then((board)=>{
-    Board.getAll().then((boards)=>{
+    Board.getAll().then((board)=>{
       res.render("home", {
-        boards
+        board
       })
     })
   },(error)=>{
@@ -41,18 +41,20 @@ router.post("/", auth, (req, res)=>{
 
 // localhost:3000/post/someid
 router.get("/:id", (req, res)=>{
+  console.log(req.params.id)
+  console.log("1")
   console.log("POST /board/"+req.params.id)
-  Post.get(req.params.id).then((board)=>{
-    console.log(board)
-    res.render("board", {
-      board
-    })
+  Board.get(req.params.id).then((board)=>{
+    console.log("gumana")
+    res.render("board", board)
   },(error)=>{
     res.render("home", {
       error
     })
   })
 })
+
+
 
 // always remember to export the router
 module.exports = router

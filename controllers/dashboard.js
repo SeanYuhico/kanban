@@ -3,7 +3,6 @@ const router = express.Router()
 const Board = require("../models/board")
 const bodyparser = require("body-parser")
 const auth = require("../middlewares/auth")
-const Board = require("../models/board")
 
 const app = express()
 
@@ -40,7 +39,7 @@ router.get("/boards", (req,res)=>{
         res.render("dashboard", {
           boards
         })
-        
+        console.log(req.params.boardName)
       }, (error)=> {
         console.log("may error dito");
         res.render("login",{
@@ -50,20 +49,30 @@ router.get("/boards", (req,res)=>{
 })
 
 router.post("/add",(req,res)=>{
-    let board = {
-        boardName : req.body.name,
-        
-      }
-    
-      Board.create(board).then((board)=>{
-          console.log("successful " + board)
-        //   req.session.username = user.username
-          res.render("dashboard", {
-            board
-          })
-      },(error)=>{
-        // res.render("/register", {
-        //   error : "some error in registering: " + error
-        // })
+  console.log("get /user/register")
+  let currUser = req.session.username
+  let board = {
+      boardName : req.body.boardname,
+      members: [{currUser}],
+      lists: [{}]
+    }
+  
+    Board.create(board).then((board)=>{
+        console.log("successful " + board)
+      //   req.session.username = user.username
+      console.log(req.body.boardname + " " + "1")
+      res.redirect("../dashboard/boards")
+    },(error)=>{
+      res.render("/dashboard/boards", {
+        error : "some error in adding board: " + error
       })
+    })
 })
+
+// router.get("/:id", (req, res)=>{
+//   console.log("dashboard")
+//   console.log("POST /post/"+req.body.boardname)
+//   res.redirect("../board/:id")
+// })
+
+module.exports = router;
