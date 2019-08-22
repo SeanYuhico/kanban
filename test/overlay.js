@@ -63,6 +63,6 @@
 				$( id ).removeClass( 'overlay-open' );
 				$( 'body' ).removeClass( 'overlay-view' );
 			}
-		});
+		});		
 	});
 }) (jQuery);

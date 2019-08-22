@@ -180,6 +180,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     user-select: none;
     white-space: nowrap;
+    display: inline-flex;
 }
 
 .lane{
@@ -196,22 +197,33 @@ h1, h2, h3, h4, h5, h6 {
     white-space: normal;
     border-radius: 10px;
     overflow: hidden;
+    margin: 0 20 10 20px;
 }
 
 .add-lane{
+    border-radius: 10px;
     position: relative;
     box-sizing: border-box;
-    margin: 0 auto;
     min-width: 280px;
     max-width: 280px;
-    padding: 16px;
-    background-color: rgb(218, 218, 218);
     max-height: 100px;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
 }
 
-.add-lane:hover {
+.add-lane-toggle {
+    background-color: rgb(218, 218, 218);
+    padding: 10 16 10 16px;
+}
+
+.add-lane-toggle:hover {
     background-color: rgb(175, 175, 175);
+}
+
+.add-lane-form {
+    display: flex;
+    padding: 0 16px;
+    background-color: rgb(218, 218, 218);
 }
 
 .lane-header {
@@ -299,7 +311,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .button {
     text-align: center;
-    margin-top:10px;
     justify-content: center;
     border-radius: 4px;
     background-color: #1f975f;
@@ -310,4 +321,71 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 20px;
     text-decoration: none;
     padding: 5px;
+    margin: 10px;
+}
+
+
+
+
+
+
+.description-editable {
+    border-color: #bd0f18;
+    box-shadow: inset 0 0 10px #555;
+    background: #f2f2f2;
+}
+  
+.description-text {
+    outline: none;
+    overflow-wrap: break-word;
+}
+  
+  .edit, .save {
+    width: 30px;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 4px 10px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: -1px 1px 4px rgba(0,0,0,0.5);
+  }
+  
+  .edit { 
+    background: #557a11;
+    color: #f0f0f0;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+  }
+  
+  .save {
+    display: none;
+    background: #bd0f18;
+    color: #f0f0f0;
+  }
+  
+  .description-container:hover .edit {
+    opacity: 1;
+  }
+
+  .description-container {
+    position: relative;
+    margin: 20px;
+    padding: 30px 10px 5px;
+    width: 400px;
+    min-height: 150px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background: #fff;
+  }
+
+.card-btn-container .button{
+    display: inline-flex;
+}
+
+.attachment-btn {
+
 }
