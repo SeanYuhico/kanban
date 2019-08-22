@@ -5,9 +5,9 @@ $( document ).ready(function() {
         $(".description-container").addClass("description-editable");
         $(".description-text").attr("contenteditable", "true");
         $(".save").show();
-      });
+    });
       
-      $(".save").click(function() {
+    $(".save").click(function() {
         $(this).hide();
         /*
             This is where you save the text
@@ -29,6 +29,7 @@ $( document ).ready(function() {
 
     });
 
+    // this is for editing a lane
     $(".lanename").click(function() {
         let lane = this;
         $(document).on( "click", function( event ) {
@@ -44,6 +45,34 @@ $( document ).ready(function() {
                     data:{
                         id: id,
                         listname: name
+                    }, 
+                    success: function(result){
+                        console.log(result);
+                        
+                        //place db shit here
+                        
+                    }
+                });
+            }
+        });
+    });
+
+    // this is for editing a lane
+    $("#boardname").click(function() {
+        let board = this;
+        $(document).on( "click", function( event ) {
+
+            // new name gets saved when you click outside the doc
+            if (!event.target.matches(board)) {
+                let id = $("#boardname").attr("data-id"),
+                    name = lane.text();
+
+                $.ajax({
+                    url: "../edit-boardname/" + id,
+                    method: "PUT",
+                    data:{
+                        id: id,
+                        boardname: name
                     }, 
                     success: function(result){
                         console.log(result);
