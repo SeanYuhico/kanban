@@ -26,11 +26,69 @@ $( document ).ready(function() {
         } else if (!event.target.matches(".add-lane-form") && $('.add-lane-form').is(":visible") === true) {
             $('.add-lane-form').toggle();
         } 
+
     });
 
+    $(".lanename").click(function() {
+        // get id of lane
+    });
+
+
+    // this is for adding  a lane
+    $("button#new-lane-button").click(function(){
+        let name = $("#new-card-name").text();
+
+        // let boardid = ???
+        console.log(name);
+        
+        $.ajax({
+            url: "../new-lane/" + id,
+            method: "POST",
+            data:{
+                listname: name
+            }, 
+            success: function(result){
+                console.log(result);
+                
+                //place db shit here
+                
+            }
+        });
+    });
+
+    // this is for adding a card
+    // this needs to be changed to accomodate the list id since wala pa yun
+    $("button#save-new-card").click(function(){
+        let name = $("#new-card-name").text(),
+            desc = $("#new-card-desc").text(),
+            img = $("#new-img").val();
+
+        // let listid = ???
+
+        console.log(name);
+        console.log(desc);
+        console.log(img);
+        
+        $.ajax({
+            url: "../new-card/" + id,
+            method: "POST",
+            data:{
+                cardname: name,
+                carddesc: desc,
+                filename: img
+            }, 
+            success: function(result){
+                console.log(result);
+                
+                //place db shit here
+                
+            }
+        });
+    });
+
+
+    // this is for updating a card
     $("button#save-edit-card").click(function(){
-
-
         let id = $(this).attr("data-id"),
             name = $("#edit-card-name").text(),
             desc = $("#edit-card-desc").text(),
@@ -42,7 +100,7 @@ $( document ).ready(function() {
         console.log(img);
         
         $.ajax({
-            url: "../board/" + id,
+            url: "../edit-card/" + id,
             method: "PUT",
             data:{
                 id: id,
@@ -57,22 +115,5 @@ $( document ).ready(function() {
                 
             }
         });
-        /*
-         $.ajax({
-                type:'PUT',
-                url: '/events/update/'+$(this).data('id'),
-                data: {event_name: change}
-            }).done(function(response){
-                console.log(response);
-                window.location.replace('http://localhost:3030/');
-            }).fail(function(response){
-                console.log("Oops not working");
-            });
-            
-
-            
-    });
-});
-        */
     });
 });

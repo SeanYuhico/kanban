@@ -19,12 +19,12 @@
         </div>
         <div class="board-view-panel">
             <div class="board-view-name">
-                <h2>boardName</h2>
+                <h2 id="boardname">boardName</h2>
             </div>
             <div class="lane-container">
                 <div class="lane">
                     <div class="lane-header">
-                        <h2>laneName</h2>
+                        <h2 class="lanename">laneName</h2>
                     </div>
                     <div class="card-container">
                         <div class="overlay-trigger card" data-overlay="overlay-view-card">
@@ -49,10 +49,8 @@
                     </div>
                     <!--This is where new lanes can be added-->
                     <div class="add-lane-form">
-                        <form>
-                            <input class="field" type="text" name="laneName">
-                            <input class="button" type="submit" value="add lane">
-                        </form>
+                        <input id="new-lane-name" class="field" type="text" name="laneName">
+                        <button id="new-lane-button" class="button">Add lane</button>
                     </div>
                 </div>
             </div>
@@ -90,10 +88,10 @@
 
         <div id="overlay-new-card" class="overlay">
             <div class="overlay-inner">
-                <form id = "new-card-view" class="card-view">
+                <div id = "new-card-view" class="card-view">
                     <div contenteditable="true" id="new-card-name" class="card-title">Card Title</div>
                     <div class="description-container">
-                        <div class="description-text" contenteditable="true">
+                        <div class="description-text" id="new-card-desc" contenteditable="true">
                             This is a description.
                         </div>
                     </div>
@@ -102,14 +100,12 @@
                                 <label for="imageUpload" class="attachment-btn">
                                     Choose Image
                                 </label>
-                                <input id="imageUpload" type="file" name="pic" accept="image/*">
+                                <input id="new-img" class="imageUpload" type="file" name="pic" accept="image/*">
                             </span>
                             <div class="attachment"></div>
                     </div>
-                    <div class="card-btn-container">
-                        <input type="submit" value="Save" class="button">
-                    </div>
-                </form>
+                    <button id="save-new-card">Save</button>
+                </div>
             </div>
         </div>
 
@@ -127,6 +123,6 @@
             </div>
         </div>
     </body>
-    <script src="overlay.js"></script>
+    <script src="/public/overlay.js"></script>
     <script src="board.js"></script>
 </html>

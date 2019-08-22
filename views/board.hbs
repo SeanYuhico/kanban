@@ -9,18 +9,17 @@
             <ul class="nav-left">
                 <li class="menu-toggle">User</li>
                 <li class="active"><a href="#">Home</a></li>
-                <li class="menu-toggle">Boards</li>
             </ul>
             <a href="#" class="kanban-label"><h1>Kanban</h1></a>
             <ul class="nav-right">
-                <li class="menu-toggle">Add</li>
+                <li class="overlay-trigger" data-overlay="overlay-new-board">Add</li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Log Out</a></li>
             </ul>
         </div>
         <div class="board-view-panel">
             <div class="board-view-name">
-                <h2>{{boardName}}</h2>
+                <h2 id="boardname" contenteditable="true">{{boardName}}</h2>
             </div>
             <button id = "jonal"> SAMPLE </button>
             <script>
@@ -38,32 +37,102 @@
                 {{#each lane}}
                 <div class="lane" data-id={{_id}}>
                     <div class="lane-header">
-                        <h2>{{laneName}}</h2>
+                        <h2 contenteditable="true" class="lanename">{{laneName}}</h2>
                     </div>
                     <div class="card-container">
 
                         {{#each card}}
-                        <div class="card" data-id={{_id}}>
+                        <div class="overlay-trigger card" data-id={{_id}} data-overlay="overlay-view-card">
                             <img src={{cardimg}}>
                             <p>{{cardtitle}}</p>
                         </div>
                         {{/each}}
                     </div>
-                    <div class="add-card">
+                    <div class="add-card overlay-trigger" data-overlay="overlay-new-card">
                         Add a card
-                    </div>
-                    <div class="add-card-clicked">
-                        <div class="add-card-title">
-                            <input type="text">
-                            <input type="submit">
-                        </div>
                     </div>
                 </div>
                 {{/each}}
                 <div class="add-lane">
-                    Add a lane
+                    <div class="add-lane-toggle">
+                        Add a lane
+                    </div>
+                <!--This is where new lanes can be added-->
+                    <div class="add-lane-form">
+                        <input id="new-lane-name" class="field" type="text" name="laneName">
+                        <button id="new-lane-button" class="button">Add lane</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay-view-card" class="overlay">
+            <div class="overlay-inner">
+                <div id = "card-info-view" class="card-view">
+                    <div id="edit-card-name" contenteditable="true" class="card-title">Card Title</div>
+                    <div class="description-container">
+                        <div contenteditable="true" id="edit-card-desc" class="description-text">
+                            This is a description
+                        </div>
+                    </div>
+                    <form id="edit-card">
+                    <div class="attachment-container">
+                        <span>
+                            <label for="edit-img" class="attachment-btn">
+                                Choose Image
+                            </label>
+                            <input id="edit-img" class="imageUpload" type="file" name="pic" accept="image/*">
+                        </span>
+                        <div class="attachment"></div>
+                    </div>
+                    </form>
+                    <button id="save-edit-card">Save</button>
+                    <div class="card-btn-container">
+                        <div class="move-card button ">Move</div>
+                        <div class="delete-card button">Delete</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay-new-card" class="overlay">
+            <div class="overlay-inner">
+                <div id = "new-card-view" class="card-view">
+                    <div contenteditable="true" id="new-card-name" class="card-title">Card Title</div>
+                    <div class="description-container">
+                        <div class="description-text" id="new-card-desc" contenteditable="true">
+                            This is a description.
+                        </div>
+                    </div>
+                    <div class="attachment-container">
+                            <span>
+                                <label for="imageUpload" class="attachment-btn">
+                                    Choose Image
+                                </label>
+                                <input id="new-img" class="imageUpload" type="file" name="pic" accept="image/*">
+                            </span>
+                            <div class="attachment"></div>
+                    </div>
+                    <button id="save-new-card">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay-new-board" class="overlay">
+            <div class="overlay-inner">
+                <div id = "new-board-container">
+                    <div>Board Name</div>
+                    <div>
+                        <form action="" method="POST">
+                            <input class="field" name="boardname" type="text">
+                            <input class="button" value="Create Board" type="submit">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </body>
+    <script src="/public/overlay.js"></script>
+    <script src="/controllers/board.js"></script>
 </html>
