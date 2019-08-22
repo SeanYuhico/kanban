@@ -30,13 +30,36 @@ $( document ).ready(function() {
     });
 
     $(".lanename").click(function() {
-        // get id of lane
+        let lane = this;
+        $(document).on( "click", function( event ) {
+
+            // new name gets saved when you click outside the doc
+            if (!event.target.matches(lane)) {
+                let id = $(lane).attr("data-id"),
+                    name = lane.text();
+
+                $.ajax({
+                    url: "../edit-lanename/" + id,
+                    method: "PUT",
+                    data:{
+                        id: id,
+                        listname: name
+                    }, 
+                    success: function(result){
+                        console.log(result);
+                        
+                        //place db shit here
+                        
+                    }
+                });
+            }
+        });
     });
 
 
     // this is for adding  a lane
     $("button#new-lane-button").click(function(){
-        let name = $("#new-card-name").text();
+        let name = $("#new-lane-name").text();
 
         // let boardid = ???
         console.log(name);
