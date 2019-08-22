@@ -282,7 +282,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-#card-info-container {
+.card-view {
 
     padding: 10px;
     background-color: white;
@@ -299,6 +299,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: center;
 }
+
 
 .field {
     border-radius: 5px;
@@ -326,7 +327,11 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-
+.card-title {
+    text-align: left;
+    display: block;
+    width: 400px;
+}
 
 
 .description-editable {
@@ -338,6 +343,9 @@ h1, h2, h3, h4, h5, h6 {
 .description-text {
     outline: none;
     overflow-wrap: break-word;
+    width: 90%;
+    min-height: inherit;
+
 }
   
   .edit, .save {
@@ -387,5 +395,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .attachment-btn {
+    padding: 10 10 10 30px;
+    position: relative;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    background-color: #1f975f;
+    border-radius: 10px;
+}
 
+.attachment-btn:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 0;
+    width: 15px;
+    display: inline-flex;
+    background: url(/public/clip.svg) no-repeat;
+    height: 15px;
+}
+
+.imageUpload {
+    display: none;
 }
