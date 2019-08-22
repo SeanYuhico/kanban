@@ -16,7 +16,8 @@ const app = express()
 
 mongoose.Promise = global.Promise
 mongoose.connect("mongodb://localhost:27017/kanban", {
-  useNewUrlParser:true
+  useNewUrlParser:true,
+  useFindAndModify: false
 })
 app.set("view engine", "hbs")
 // const publicPath = path.resolve(__dirname, "public");

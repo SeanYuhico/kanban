@@ -1,6 +1,7 @@
 <html>
     <head>
-        <link rel = "stylesheet" href = "/css/dashboard.css"/>
+        <link rel = "stylesheet" href = "../css/overlay.css"/>
+        <link rel = "stylesheet" href = "../css/dashboard.css"/>
         <script src="/jquery.js"></script>
     </head>
     <body> 
@@ -21,7 +22,7 @@
             <div class="board-view-name">
                 <h2 id="boardname" contenteditable="true">{{boardName}}</h2>
             </div>
-            <button id = "jonal"> SAMPLE </button>
+            {{!-- <button id = "jonal"> SAMPLE </button>
             <script>
                 $("#jonal").on('click', () => {
                     $.get("/sample", (data) => {
@@ -32,12 +33,13 @@
                     })
                 })
 
-            </script>
+            </script> --}}
             <div class="lane-container">
-                {{#each lane}}
+                {{#each lists}}
                 <div class="lane" data-id={{_id}}>
                     <div class="lane-header">
-                        <h2 contenteditable="true" class="lanename">{{laneName}}</h2>
+                        {{!-- <h2 contenteditable="true" class="lanename">{{listName}}</h2> --}}
+                        {{listName}}
                     </div>
                     <div class="card-container">
 
@@ -133,6 +135,6 @@
             </div>
         </div>
     </body>
-    <script src="/public/overlay.js"></script>
-    <script src="/controllers/board.js"></script>
+    <script src="/overlay.js"></script>
+    {{!-- <script src="../controllers/board.js"></script> --}}
 </html>

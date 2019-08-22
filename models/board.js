@@ -56,7 +56,7 @@ exports.getAll = function(){
 
 exports.edit = function(id, update){
   return new Promise(function(resolve, reject){
-    Board.findOneAndUpdate({
+    Board.findByIdAndUpdate({
       _id : id
     }, update, {
       new : true

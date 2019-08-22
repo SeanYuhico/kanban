@@ -14,11 +14,11 @@ var listSchema = mongoose.Schema({
     cards: []
 })
 
-var Board = mongoose.model("list", listSchema)
+let List = mongoose.model("list", listSchema)
 
 exports.create = function(list){
   return new Promise(function(resolve, reject){
-    var p = new Post(list)
+    var p = new List(list)
 
     p.save().then((newList)=>{
       resolve(newList)
@@ -30,7 +30,7 @@ exports.create = function(list){
 
 exports.get = function(id){
   return new Promise(function(resolve, reject){
-    Post.findOne({_id:id}).then((list)=>{
+    List.findOne({_id:id}).then((list)=>{
       console.log(list)
       resolve(list)
     }, (err)=>{
@@ -41,8 +41,8 @@ exports.get = function(id){
 
 exports.getAll = function(){
   return new Promise(function(resolve, reject){
-    Post.find().then((boards)=>{
-      resolve(boards)
+    List.find().then((lists)=>{
+      resolve(lists)
     }, (err)=>{
       reject(err)
     })
@@ -51,7 +51,7 @@ exports.getAll = function(){
 
 exports.edit = function(id, update){
   return new Promise(function(resolve, reject){
-    Post.findOneAndUpdate({
+    List.findOneAndUpdate({
       _id : id
     }, update, {
       new : true
@@ -65,7 +65,7 @@ exports.edit = function(id, update){
 
 exports.delete = function(id){
   return new Promise(function(resolve, reject){
-    Post.remove({
+    List.remove({
       _id : id
     }).then((result)=>{
       resolve(result)
