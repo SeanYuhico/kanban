@@ -101,7 +101,8 @@ router.post("/new-lane", (req,res)=>{
       console.log("successful board edit: " + board)
     })
 })
-router.get("/new-card",(req,res)=>{
+router.post("/new-card",(req,res)=>{
+  console.log("it went in sa /new-card")
   let newCard = {
     cardName: undefined,
     members: req.session.username,
@@ -109,7 +110,14 @@ router.get("/new-card",(req,res)=>{
     imgname: String,
     originalimgname: String
   }
-  List.get()
+  res.send(newCard)
+  let newList = {
+    cards: [{newCard}]
+  }
+  List.search(document.getElementsByClassName('lane-header'))
+  List.edit(listID,newList).then((list)=>{
+    console.log("successful list edit: " + board)
+  })
 })
 
 router.get("/sample", function(req, res) {

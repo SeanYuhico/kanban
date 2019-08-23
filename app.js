@@ -35,3 +35,6 @@ app.use(session({
 app.use(require("./controllers"))
 
 app.listen(process.env.PORT || 3000)
+// app.listen(5000,(req,res)=>{
+//   console.log("live at port 5000")
+// })

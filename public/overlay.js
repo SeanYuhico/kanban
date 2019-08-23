@@ -138,20 +138,22 @@ $( document ).ready(function() {
 		console.log(img);
 		
 		$.ajax({
-			url: "../board/new-card/",
+			url: "../board/new-card",
 			method: "POST",
+			datatype:"json", 
 			data:{
-				cardname: name,
-				carddesc: desc,
-				filename: img
+				cardName: name,
+				description: desc,
+				imgname: img
 			}, 
 			success: function(result){
 				console.log(result);
-				
+				location.reload(true);
 				//place db shit here
 				
 			}
 		});
+		 console.log("not success")
 	});
   
   

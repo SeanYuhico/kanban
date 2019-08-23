@@ -49,6 +49,14 @@ exports.getAll = function(){
   })
 }
 
+exports.search = function(name){
+  return new Promise(function(resolve, reject){
+    List.findOne({listName:name}, function(err,obj){
+      console.log(obj)
+    })
+  })
+}
+
 exports.edit = function(id, update){
   return new Promise(function(resolve, reject){
     List.findByIdAndUpdate({
