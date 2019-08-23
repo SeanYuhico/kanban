@@ -42,15 +42,14 @@
                         {{listName}}
                     </div>
                     <div class="card-container">
-
-                        {{#each card}}
-                        <div class="overlay-trigger card" data-id={{_id}} data-overlay="overlay-view-card">
+                        {{#each cards}}
+                        <div class="overlay-trigger card" data-id="{{_id}}" data-overlay="overlay-view-card">
                             <img src={{cardimg}}>
                             <p>{{cardtitle}}</p>
                         </div>
                         {{/each}}
                     </div>
-                    <div class="add-card overlay-trigger" data-overlay="overlay-new-card">
+                    <div class="add-card overlay-trigger" data-id="{{_id}}" data-overlay="overlay-new-card">
                         Add a card
                     </div>
                 </div>

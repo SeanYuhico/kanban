@@ -8,6 +8,7 @@ const express = require("express")
 const router = express.Router()
 const Board = require("../models/board")
 const List = require("../models/list")
+const Card = require("../models/card")
 const bodyparser = require("body-parser")
 const auth = require("../middlewares/auth")
 
@@ -74,50 +75,50 @@ router.post("/new-lane", (req,res)=>{
       console.log("successful list creation " + list)
       //   req.session.username = user.username
       console.log(req.body.listName)
-      
-      // res.redirect("../dashboard/boards")
+
+
+      Board.addList(boardID, list);
       res.send(list)
-      listID=list._id
+      // listID=list._id
     },(error)=>{
       // res.render("/dashboard/boards", {
         // error : "some error in adding board: " + error
       // })
     })
-
-    let newBoard = {
-      // boardName : req.body.boardName,
-      members : req.session.username,
-      lists : list
-    }
-    // console.log(newBoard)
-    // Board.get(boardID).then((board)=>{
-    //   console.log(board.boardName)
-    //   newBoard.boardName=board.boardName
-    //   newBoard.members=board.members
-      // newBoard.lists.push(lists)
-    // })
-    Board.edit(boardID, newBoard).then((board)=>{
-      // board.lists.push(list)
-      console.log("successful board edit: " + board)
-    })
 })
 router.post("/new-card",(req,res)=>{
   console.log("it went in sa /new-card")
+  let listid= req.body.listID
   let newCard = {
-    cardName: undefined,
+    cardName: req.body.cardName,
     members: req.session.username,
-    description: String,
-    imgname: String,
-    originalimgname: String
+    description: req.body.description,
+    imgname: req.body.imgname,
+    originalimgname: req.body.imgname
   }
-  res.send(newCard)
-  let newList = {
-    cards: [{newCard}]
-  }
-  List.search(document.getElementsByClassName('lane-header'))
-  List.edit(listID,newList).then((list)=>{
-    console.log("successful list edit: " + board)
+  console.log(newCard)
+  // Card.create(newCard).then((card)=>{
+  //   console.log("successful card creation " + card)
+  //   console.log("kunyari lang")
+  //   console.log(listid)
+  //   List.addCard(listid, card);
+  Card.addtoBoard(boardID, listid, newCard).then((card)=>{
+    console.log("successful add to board " + card)
+  
+
+    res.send(card)
+    // listID=list._id
+  },(error)=>{
+    
   })
+
+  res.send(newCard)
+  // let newList = {
+  //   cards: [{newCard}]
+  // }
+  // let tempList = List.search(window.document.getElementsByClassName('lane-header'))
+  // console.log("check tempList")
+  // console.log(tempList._id)
 })
 
 router.get("/sample", function(req, res) {

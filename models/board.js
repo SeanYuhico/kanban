@@ -68,6 +68,19 @@ exports.edit = function(id, update){
   })
 }
 
+
+exports.addList = function(id, list){
+  return new Promise(function(resolve, reject){
+    Board.findByIdAndUpdate({
+      _id : id
+    }, {$push: {lists: list}}).then((newBoard)=>{
+      resolve(newBoard)
+    }, (err)=>{
+      reject(err)
+    })
+  })
+}
+
 exports.delete = function(id){
   return new Promise(function(resolve, reject){
     Board.remove({

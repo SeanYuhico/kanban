@@ -71,6 +71,18 @@ exports.edit = function(id, update){
   })
 }
 
+exports.addCard = function(id, card){
+  return new Promise(function(resolve, reject){
+    List.findByIdAndUpdate({
+      _id : id
+    }, {$push: {cards: card}}).then((newList)=>{
+      resolve(newList)
+    }, (err)=>{
+      reject(err)
+    })
+  })
+}
+
 exports.delete = function(id){
   return new Promise(function(resolve, reject){
     List.remove({

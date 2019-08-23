@@ -67,6 +67,8 @@
 	});
 }) (jQuery);
 
+let laneToAddCardID;
+
 $( document ).ready(function() {
 	$('.add-lane-form').toggle();
 	$(".edit").click(function() {
@@ -102,7 +104,7 @@ $( document ).ready(function() {
 		// get id of lane
 	});
   
-  
+	
 	// this is for adding  a lane
 	$("button#new-lane-button").click(function(){
 		let name = $("#new-lane-name").val();
@@ -123,6 +125,14 @@ $( document ).ready(function() {
 			}
 		});
 	});
+
+	
+
+	$(".add-card").click(function(){
+		let $lane = $(this).parent().closest('div');
+		laneToAddCardID = $lane.data('id')
+	});
+	
   
 	// this is for adding a card
 	// this needs to be changed to accomodate the list id since wala pa yun
@@ -131,8 +141,10 @@ $( document ).ready(function() {
 			desc = $("#new-card-desc").text(),
 			img = $("#new-img").val();
   
-		// let listid = ???
-  
+
+		let listid = laneToAddCardID;
+		//let listid = $(this).data("data-id")
+		console.log(listid)
 		console.log(name);
 		console.log(desc);
 		console.log(img);
@@ -144,7 +156,8 @@ $( document ).ready(function() {
 			data:{
 				cardName: name,
 				description: desc,
-				imgname: img
+				imgname: img,
+				listID: listid
 			}, 
 			success: function(result){
 				console.log(result);

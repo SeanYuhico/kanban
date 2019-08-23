@@ -16,14 +16,28 @@ var cardSchema = mongoose.Schema({
     originalimgname: String
 })
 
+var boardSchema = mongoose.Schema({
+  boardName: String,
+  members: [],
+  lists: []
+})
+
+var listSchema = mongoose.Schema({
+  listName: String,
+  // members: [],
+  cards: []
+})
+
 var Card = mongoose.model("card", cardSchema)
+var Board = mongoose.model("board", boardSchema)
+var List = mongoose.model("list", listSchema)
 
 exports.create = function(card){
   return new Promise(function(resolve, reject){
-    var p = new Post(card)
+    var p = new Card(card)
 
-    p.save().then((newcard)=>{
-      resolve(newcard)
+    p.save().then((newCard)=>{
+      resolve(newCard)
     }, (err)=>{
       reject(err)
     })
@@ -32,7 +46,7 @@ exports.create = function(card){
 
 exports.get = function(id){
   return new Promise(function(resolve, reject){
-    Post.findOne({_id:id}).then((card)=>{
+    Card.findOne({_id:id}).then((card)=>{
       console.log(card)
       resolve(card)
     }, (err)=>{
@@ -43,7 +57,7 @@ exports.get = function(id){
 
 exports.getAll = function(){
   return new Promise(function(resolve, reject){
-    Post.find().then((cards)=>{
+    Card.find().then((cards)=>{
       resolve(cards)
     }, (err)=>{
       reject(err)
@@ -53,7 +67,7 @@ exports.getAll = function(){
 
 exports.edit = function(id, update){
   return new Promise(function(resolve, reject){
-    Post.findOneAndUpdate({
+    Card.findOneAndUpdate({
       _id : id
     }, update, {
       new : true
@@ -65,9 +79,27 @@ exports.edit = function(id, update){
   })
 }
 
+exports.addtoBoard = function(boardid, listid, card){
+  return new Promise(function(resolve,reject){
+    List.findOneAndUpdate({
+      _id : listid
+    }, {$push: {cards: card}}).then((newList)=>{
+      resolve(newList)
+    }, (err)=>{
+      reject(err)
+    })
+    Board.findOneAndUpdate({
+      _id : boardid
+    }, {$push: {lists: newList}}).then((newBoard)=>{
+      resolve(newBoard) 
+    }, (err)=>{
+      reject(err)
+    })
+  })
+}
 exports.delete = function(id){
   return new Promise(function(resolve, reject){
-    Post.remove({
+    Card.remove({
       _id : id
     }).then((result)=>{
       resolve(result)
