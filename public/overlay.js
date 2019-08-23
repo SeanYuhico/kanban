@@ -34,8 +34,8 @@
 		 * scrolling, both by adding a simple class. The rest
 		 * is handled by CSS (awesome).
 		 */
-		$( id ).addClass( 'overlay-open' );
-		$( 'body' ).addClass( 'overlay-view' );
+		
+
 
 
 		/**
@@ -52,6 +52,8 @@
 				$( 'body' ).removeClass( 'overlay-view' );
 			}
 		});
+		$( id ).addClass( 'overlay-open' );
+		$( 'body' ).addClass( 'overlay-view' );
 
 		/**
 		 * Closes the overlay when the esc key is pressed. See

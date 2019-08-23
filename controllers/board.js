@@ -136,6 +136,16 @@ router.post("/new-card",(req,res)=>{
   */
 })
 
+router.get("/view-card", function(req,res){
+  Card.get(req.data.cardid).then((card)=>{
+    console.log(card)
+    resolve(card)
+    res.send(card)
+  }, (err)=>{
+    reject(err)
+  })
+})
+
 router.get("/sample", function(req, res) {
   //gawin lahat ng shits regarding db and saving sa new list
   //pwede din isave new order dito 
