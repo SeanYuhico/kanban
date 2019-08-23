@@ -23,12 +23,18 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     box-sizing: border-box;
     background-color: #219b62;
+    box-shadow: 0 1px 6px 0 rgba(37, 54, 44, 0.28);
     width: 100%;
     align-items: center;
 }
 
 .navigation h1 {
     color: white;
+}
+
+.navigation li a {
+    color: black;
+    text-decoration-color: black;
 }
 
 .navigation li{
