@@ -37,28 +37,6 @@
 		$( id ).addClass( 'overlay-open' );
 		$( 'body' ).addClass( 'overlay-view' );
 
-		if (id === "#overlay-view-card") {
-			console.log(id);
-			
-
-			$.ajax({
-				url: "../board/new-lane",
-				method: "GET",
-				data:{
-					cardid: cardIdFromSelect
-				}, 
-				success: function(result){
-					console.log(result);
-					
-					//place db shit here
-					location.reload(true);
-				}
-			});
-
-			//cardIdFromSelect
-		}
-
-
 
 		/**
 		 * When the overlay outer wrapper or `overlay-close`
@@ -124,8 +102,8 @@ $( document ).ready(function() {
 		if (event.target.matches(".add-lane-toggle")) {
 			$('.add-lane-form').toggle();
 		} else if (!event.target.matches(".add-lane-form") 
-			&& !event.target.matches(".new-lane-name")
-			&& !event.target.matches(".new-lane-button")
+			&& !event.target.matches("#new-lane-name")
+			&& !event.target.matches("#new-lane-button")
 			&& $('.add-lane-form').is(":visible") === true) {
 			$('.add-lane-form').toggle();
 		} 

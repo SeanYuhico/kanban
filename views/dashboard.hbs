@@ -11,9 +11,7 @@
                 <span class="glyphicon glyphicon-menu-hamburger glyphicon-image"></span>
             </button>-->
             <ul class="nav-left">
-                <li class="menu-toggle">User</li>
                 <li class="active"><a href="#">Home</a></li>
-                <li class="menu-toggle">Boards</li>
             </ul>
             <a href="#" class="kanban-label"><h1>Kanban</h1></a>
             <ul class="nav-right">
@@ -42,9 +40,8 @@
             
             <div class="board-ctnr">
                 {{#each boards}}
-                    <a href="../board/{{_id}}" data-id={{_id}} class="board">
+                    <a href="../board/{{_id}}" data-id={{_id}} class="board center-column">
                             <div class="board-name">{{boardName}}</div>
-                            <div class="favorite-toggle"></div>
                     </a>
                 {{/each}}
                 {{!-- <form class="add-board-form" action="../dashboard/:id" method="GET">
@@ -55,8 +52,8 @@
                     <input class="add-board-submit" value="{{boardName}}" data-id="{{_id}}" type="submit">
                 </form> --}}
                 
-                <a href class="overlay-trigger add-board board" data-overlay="overlay-new-board">
-                    <div class="board-name">Add new board</div>
+                <a href class="overlay-trigger add-board board center-column" data-overlay="overlay-new-board">
+                    <div class="board-name">Add new board</div> 
                 </a>
             </div>
 
@@ -66,8 +63,8 @@
                     <div id = "new-board-container">
                         <div>Board Name</div>
                         <div>
-                            <form action="add" method="POST">
-                                <input class="field" name="boardname" type="text">
+                            <form class="center-column" action="add" method="POST">
+                                <input class="field" name="boardname" type="text"><br>
                                 <input class="button" value="Create Board" type="submit">
                             </form>
                         </div>
