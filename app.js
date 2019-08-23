@@ -15,7 +15,8 @@ const session = require("express-session")
 const app = express()
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost:27017/kanban", {
+// mongoose.connect("mongodb://localhost:27017/kanban", {
+mongoose.connect("mongodb+srv://admin:admin@kanban-iuzdz.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser:true,
   useFindAndModify: false
 })
@@ -33,6 +34,4 @@ app.use(session({
 
 app.use(require("./controllers"))
 
-app.listen(5000, (req,res)=>{
-  console.log("live at port 5000")
-})
+app.listen(process.env.PORT || 3000)
