@@ -1,10 +1,14 @@
 {
   "name": "kanban",
   "version": "1.0.0",
+  "engines" : {
+    "node" : "10.16.0"
+  },
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -24,8 +28,5 @@
     "express-session": "^1.16.2",
     "hbs": "^4.0.4",
     "mongoose": "^5.6.8"
-  }, 
-  "engines" : {
-    "node" : "10.16.0"
   }
 }
