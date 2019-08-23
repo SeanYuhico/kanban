@@ -63,9 +63,8 @@ router.post("/new-lane", (req,res)=>{
   // let currUser = req.session.username
   
   let list = {
-      listName : req.body.listName,
-      cards: [{}]
-    }
+      listName : req.body.listName
+  }
   
     // let lists = [list]
     // console.log(req.params.id)
@@ -89,6 +88,7 @@ router.post("/new-lane", (req,res)=>{
 router.post("/new-card",(req,res)=>{
   console.log("it went in sa /new-card")
   let listid= req.body.listID
+  let boardID = req.body.boardID
   let newCard = {
     cardName: req.body.cardName,
     members: req.session.username,
@@ -96,29 +96,44 @@ router.post("/new-card",(req,res)=>{
     imgname: req.body.imgname,
     originalimgname: req.body.imgname
   }
+  console.log("THIS IS NEWCARD:")
   console.log(newCard)
-  // Card.create(newCard).then((card)=>{
-  //   console.log("successful card creation " + card)
-  //   console.log("kunyari lang")
-  //   console.log(listid)
-  //   List.addCard(listid, card);
-  Card.addtoBoard(boardID, listid, newCard).then((card)=>{
-    console.log("successful add to board " + card)
   
+  Card.create(newCard).then((newCard)=>{
+    console.log("successful card creation " + newCard)
+    console.log(req.body.listName)
+    console.log(newCard._id)
+    let boardCard = {
+      _id: newCard._id,
+      cardName: req.body.cardName,
+      members: req.session.username,
+      description: req.body.description,
+      imgname: req.body.imgname,
+      originalimgname: req.body.imgname
+    }
 
-    res.send(card)
-    // listID=list._id
+    Board.addtoBoard(boardID, listid, boardCard).then((card)=>{
+      console.log("successful add card to board " + card)
+      res.send(card)
+    },(error)=>{
+      console.log("ERROR")
+      console.log(error)
+    })
+    res.send(list)
   },(error)=>{
     
   })
 
-  res.send(newCard)
-  // let newList = {
-  //   cards: [{newCard}]
-  // }
-  // let tempList = List.search(window.document.getElementsByClassName('lane-header'))
-  // console.log("check tempList")
-  // console.log(tempList._id)
+  /*
+  Board.addtoBoard(boardID, listid, newCard).then((card)=>{
+    console.log("successful add card to board " + card)
+    res.send(card)
+    // listID=list._id
+  },(error)=>{
+    console.log("ERROR")
+    console.log(error)
+  })
+  */
 })
 
 router.get("/sample", function(req, res) {

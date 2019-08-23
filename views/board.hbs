@@ -22,6 +22,7 @@
             <div class="board-view-name">
                 <h2 id="boardname" contenteditable="true">{{boardName}}</h2>
             </div>
+            <input type="hidden" id="board_id" data-id="{{_id}}">
             {{!-- <button id = "jonal"> SAMPLE </button>
             <script>
                 $("#jonal").on('click', () => {
@@ -44,8 +45,8 @@
                     <div class="card-container">
                         {{#each cards}}
                         <div class="overlay-trigger card" data-id="{{_id}}" data-overlay="overlay-view-card">
-                            <img src={{cardimg}}>
-                            <p>{{cardtitle}}</p>
+                            <img src={{imgname}}>
+                            <p>{{cardName}}</p>
                         </div>
                         {{/each}}
                     </div>
@@ -108,7 +109,7 @@
                     </div>
                     <div class="attachment-container">
                             <span>
-                                <label for="imageUpload" class="attachment-btn">
+                                <label for="new-img" class="attachment-btn">
                                     Choose Image
                                 </label>
                                 <input id="new-img" class="imageUpload" type="file" name="pic" accept="image/*">

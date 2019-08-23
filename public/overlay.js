@@ -37,6 +37,29 @@
 		$( id ).addClass( 'overlay-open' );
 		$( 'body' ).addClass( 'overlay-view' );
 
+		if (id === "#overlay-view-card") {
+			console.log(id);
+			
+
+			$.ajax({
+				url: "../board/new-lane",
+				method: "GET",
+				data:{
+					cardid: cardIdFromSelect
+				}, 
+				success: function(result){
+					console.log(result);
+					
+					//place db shit here
+					location.reload(true);
+				}
+			});
+
+			//cardIdFromSelect
+		}
+
+
+
 		/**
 		 * When the overlay outer wrapper or `overlay-close`
 		 * triger is clicked, lets remove the classes from
@@ -90,14 +113,22 @@ $( document ).ready(function() {
 		$(".description-text").removeAttr("contenteditable");
 		$(".edit").show();
 	});
+
+	let cardIdFromSelect;
+
+	$(".card").click(function() {
+		cardIdFromSelect =  $(this).data('id');
+	})
 	
 	$(document).on( "click", function( event ) {
 		if (event.target.matches(".add-lane-toggle")) {
 			$('.add-lane-form').toggle();
-		} else if (!event.target.matches(".add-lane-form") && $('.add-lane-form').is(":visible") === true) {
+		} else if (!event.target.matches(".add-lane-form") 
+			&& !event.target.matches(".new-lane-name")
+			&& !event.target.matches(".new-lane-button")
+			&& $('.add-lane-form').is(":visible") === true) {
 			$('.add-lane-form').toggle();
 		} 
-  
 	});
   
 	$(".lanename").click(function() {
@@ -143,8 +174,8 @@ $( document ).ready(function() {
   
 
 		let listid = laneToAddCardID;
-		//let listid = $(this).data("data-id")
-		console.log(listid)
+		let boardID = $("#board_id").data("id")
+		//let listid = $(this).data("id")
 		console.log(name);
 		console.log(desc);
 		console.log(img);
@@ -157,7 +188,8 @@ $( document ).ready(function() {
 				cardName: name,
 				description: desc,
 				imgname: img,
-				listID: listid
+				listID: listid,
+				boardID: boardID
 			}, 
 			success: function(result){
 				console.log(result);

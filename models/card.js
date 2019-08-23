@@ -28,9 +28,7 @@ var listSchema = mongoose.Schema({
   cards: []
 })
 
-var Card = mongoose.model("card", cardSchema)
-var Board = mongoose.model("board", boardSchema)
-var List = mongoose.model("list", listSchema)
+const Card = mongoose.model("card", cardSchema)
 
 exports.create = function(card){
   return new Promise(function(resolve, reject){
@@ -79,24 +77,6 @@ exports.edit = function(id, update){
   })
 }
 
-exports.addtoBoard = function(boardid, listid, card){
-  return new Promise(function(resolve,reject){
-    List.findOneAndUpdate({
-      _id : listid
-    }, {$push: {cards: card}}).then((newList)=>{
-      resolve(newList)
-    }, (err)=>{
-      reject(err)
-    })
-    Board.findOneAndUpdate({
-      _id : boardid
-    }, {$push: {lists: newList}}).then((newBoard)=>{
-      resolve(newBoard) 
-    }, (err)=>{
-      reject(err)
-    })
-  })
-}
 exports.delete = function(id){
   return new Promise(function(resolve, reject){
     Card.remove({

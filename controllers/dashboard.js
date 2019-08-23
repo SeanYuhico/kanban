@@ -53,8 +53,7 @@ router.post("/add",(req,res)=>{
   let currUser = req.session.username
   let board = {
       boardName : req.body.boardname,
-      members: [{currUser}],
-      lists: [{}]
+      members: [{currUser}]
     }
   
     Board.create(board).then((board)=>{

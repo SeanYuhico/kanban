@@ -16,6 +16,9 @@ var boardSchema = mongoose.Schema({
 
 var Board = mongoose.model("board", boardSchema)
 
+exports.addToBoardList = function(id, list_id, card) {
+  
+}
 exports.create = function(board){
   return new Promise(function(resolve, reject){
     var p = new Board(board)
@@ -42,6 +45,26 @@ exports.get = function(id){
     })
   })
 }
+
+
+exports.addtoBoard = function(boardid, listid, card){
+  return new Promise(function(resolve, reject){
+    listid = mongoose.Types.ObjectId(listid);
+    console.log("UTOT");
+    console.log(listid);
+    console.log(card);
+
+    Board.updateOne(
+      {"lists._id": listid},
+      {"$push": {"lists.$.cards": card}},
+    ).then((newBoard)=>{
+      resolve(newBoard)
+    }, (err)=>{
+      reject(err)
+    })
+  })
+}
+
 
 exports.getAll = function(){
   return new Promise(function(resolve, reject){
