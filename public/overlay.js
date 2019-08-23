@@ -34,29 +34,7 @@
 		 * scrolling, both by adding a simple class. The rest
 		 * is handled by CSS (awesome).
 		 */
-		$( id ).addClass( 'overlay-open' );
-		$( 'body' ).addClass( 'overlay-view' );
-
-		if (id === "#overlay-view-card") {
-			console.log(id);
-			
-
-			$.ajax({
-				url: "../board/new-lane",
-				method: "GET",
-				data:{
-					cardid: cardIdFromSelect
-				}, 
-				success: function(result){
-					console.log(result);
-					
-					//place db shit here
-					location.reload(true);
-				}
-			});
-
-			//cardIdFromSelect
-		}
+		
 
 
 
@@ -74,6 +52,30 @@
 				$( 'body' ).removeClass( 'overlay-view' );
 			}
 		});
+		$( id ).addClass( 'overlay-open' );
+		$( 'body' ).addClass( 'overlay-view' );
+
+		if (id === "#overlay-view-card") {
+			console.log(id);
+			
+
+			$.ajax({
+				url: "../board/view-card",
+				method: "GET",
+				data:{
+					cardid: cardIdFromSelect
+				}, 
+				success: function(result){
+
+					console.log("result = " + result);
+					
+					//place db shit here
+					location.reload(true);
+				}
+			});
+
+			//cardIdFromSelect
+		}
 
 		/**
 		 * Closes the overlay when the esc key is pressed. See
