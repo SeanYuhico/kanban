@@ -271,6 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .lane-header {
     padding: 10px;
+    box-shadow: 0 1px 6px 0 rgba(61, 64, 68, 0.28);
 }
 
 .add-card {
